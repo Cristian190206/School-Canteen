@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#71320f">
+  <meta name="description" content="CampusBite — your campus cravings, made easy.">
+  <title>CampusBite | Your Campus, Your Cravings</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root{--sb-espresso:#4a210f;--sb-brown:#71320f;--sb-rust:#98430d;--sb-orange:#e58b39;--sb-cream:#fff8ef;--sb-paper:#fffdf9;--sb-muted:#f3dfca}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--sb-cream);color:var(--sb-espresso);font-family:Inter,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .splash{min-height:100vh;position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 75% 25%,#f9d4a4 0,transparent 24%),linear-gradient(120deg,#fff8ef 0%,#fff8ef 51%,#f8e5d0 100%)}
+    .splash:before{content:"";position:absolute;z-index:-1;width:560px;height:560px;border-radius:50%;background:#eeb06d;opacity:.12;right:-170px;top:-190px}
+    .splash:after{content:"";position:absolute;z-index:-1;width:420px;height:420px;border-radius:50%;border:1px solid #c9793b33;right:6%;bottom:-260px}
+    .splash-nav{height:88px;max-width:1240px;margin:auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .splash-brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:900;letter-spacing:-.7px;color:var(--sb-brown)}
+    .splash-logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,#b95618,#71320f);color:#fff;display:grid;place-items:center;font-size:26px;box-shadow:0 8px 20px #71320f2b}
+    .splash-brand small{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#9b7559;font-weight:700;margin-top:2px}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .nav-link{font-size:13px;font-weight:750;color:#80543a;padding:11px 13px;border-radius:10px}
+    .nav-link:hover{background:#f4e2d0}
+    .splash-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 21px;border-radius:12px;background:var(--sb-rust);color:white;font-size:14px;font-weight:800;box-shadow:0 10px 22px #98430d25;transition:transform .2s,box-shadow .2s,background .2s;border:0;cursor:pointer}
+    .splash-btn:hover{transform:translateY(-2px);box-shadow:0 14px 26px #98430d38;background:#7f350a}
+    .splash-btn.outline{background:#fffaf4;color:var(--sb-brown);border:1px solid #e8c9aa;box-shadow:none}
+    .splash-btn.outline:hover{background:#fff0df}
+    .hero{max-width:1240px;min-height:calc(100vh - 88px);margin:auto;padding:50px 28px 64px;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:36px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#f6e5d3;border:1px solid #eed1b2;color:#95501e;padding:9px 13px;border-radius:100px;font-size:11px;font-weight:850;letter-spacing:1.25px;text-transform:uppercase}
+    .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#d97724;box-shadow:0 0 0 4px #d9772420}
+    .hero h1{font-size:clamp(44px,5.5vw,76px);line-height:1.02;letter-spacing:-3.5px;margin:23px 0 20px;max-width:640px;color:var(--sb-espresso)}
+    .hero h1 em{font-style:normal;color:var(--sb-rust);position:relative;white-space:nowrap}
+    .hero-copy{max-width:500px;color:#84664f;font-size:16px;line-height:1.8;margin:0 0 28px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .trust-row{display:flex;align-items:center;gap:13px;margin-top:35px;color:#8d7059;font-size:12px}
+    .avatar-stack{display:flex;padding-left:3px}
+    .avatar{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--sb-cream);margin-left:-4px;background:#f2d0aa;font-size:15px}
+    .trust-row strong{color:#5c321c}
+    .visual{position:relative;min-height:520px;display:grid;place-items:center}
+    .visual-halo{position:absolute;width:min(42vw,470px);height:min(42vw,470px);border-radius:50%;background:linear-gradient(145deg,#f8d8ae,#efb777);box-shadow:inset -15px -20px 50px #bd6b3020,0 28px 70px #8b481b15}
+    .plate{position:absolute;width:min(35vw,390px);height:min(35vw,390px);border-radius:50%;background:linear-gradient(145deg,#fffdf8,#f7e9d9);border:12px solid #fffaf4;box-shadow:0 22px 55px #6c351c25,inset 0 0 0 2px #f1ddc7;display:grid;place-items:center;transform:rotate(-8deg)}
+    .food-art{font-size:clamp(125px,17vw,220px);filter:drop-shadow(0 17px 8px #6e351e25);transform:rotate(8deg);animation:float 5s ease-in-out infinite;line-height:1}
+    .floating-card{position:absolute;display:flex;align-items:center;gap:11px;padding:13px 16px;background:#fffdf9;border:1px solid #f0d8bf;border-radius:16px;box-shadow:0 14px 38px #67351918;animation:float 5s ease-in-out infinite}
+    .floating-card .icon{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#fff0dc;font-size:22px}
+    .floating-card strong{display:block;font-size:13px;color:#4c2916}
+    .floating-card small{display:block;color:#9a7b62;font-size:11px;margin-top:3px}
+    .card-rating{top:70px;right:0;animation-delay:-1s}
+    .card-pickup{left:0;bottom:92px;animation-delay:-2.5s}
+    .spark{position:absolute;color:#c97932;font-size:28px}
+    .spark.one{top:80px;left:16%}.spark.two{right:10%;bottom:120px;font-size:22px}
+    .mini-badge{position:absolute;bottom:38px;right:12%;background:#71320f;color:white;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:800;box-shadow:0 10px 22px #71320f2b;transform:rotate(4deg)}
+    .features{max-width:1240px;margin:0 auto;padding:0 28px 42px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .feature{display:flex;align-items:center;gap:14px;padding:19px;background:#fffdf9;border:1px solid #f0ddc9;border-radius:16px;box-shadow:0 8px 24px #64310e08}
+    .feature-icon{width:47px;height:47px;flex:0 0 47px;display:grid;place-items:center;background:#faead8;border-radius:14px;font-size:23px}
+    .feature strong{font-size:14px;display:block;margin-bottom:4px}
+    .feature p{margin:0;color:#987962;font-size:12px;line-height:1.5}
+    .splash-footer{max-width:1240px;margin:auto;padding:20px 28px 28px;border-top:1px solid #ecd8c4;display:flex;justify-content:space-between;gap:16px;align-items:center;color:#a0836b;font-size:11px}
+    .footer-links{display:flex;gap:18px}.footer-links a:hover{color:var(--sb-rust)}
+    @keyframes float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:45px;gap:0}.hero h1{max-width:680px}.visual{min-height:430px}.visual-halo{width:350px;height:350px}.plate{width:290px;height:290px}.food-art{font-size:170px}.card-rating{right:5%}.card-pickup{left:5%;bottom:55px}.features{grid-template-columns:1fr}.feature{padding:15px}.splash-footer{flex-direction:column;text-align:center}}
+    @media(max-width:560px){.splash-nav{height:74px;padding:0 18px}.splash-brand{font-size:20px}.splash-logo{width:42px;height:42px}.nav-actions .nav-link{display:none}.nav-actions .splash-btn{padding:11px 13px;font-size:12px}.hero{padding:42px 20px 30px}.hero h1{font-size:48px;letter-spacing:-2.5px}.hero-copy{font-size:14px}.hero-actions .splash-btn{width:100%}.trust-row{margin-top:25px}.visual{min-height:350px}.visual-halo{width:285px;height:285px}.plate{width:235px;height:235px;border-width:8px}.food-art{font-size:135px}.card-rating{top:25px;right:0}.card-pickup{left:0;bottom:28px}.floating-card{padding:9px 11px;gap:8px}.floating-card .icon{width:34px;height:34px;font-size:18px}.floating-card strong{font-size:11px}.floating-card small{font-size:9px}.mini-badge{right:4%;bottom:0}.spark.one{top:35px}.features{padding:0 20px 28px}.splash-footer{padding:20px}.footer-links{flex-wrap:wrap;justify-content:center}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="splash">
+    <header class="splash-nav">
+      <a class="splash-brand" href="splash.html" aria-label="CampusBite home">
+        <span class="splash-logo">🍴</span>
+        <span>CampusBite<small>School Canteen Ordering System</small></span>
+      </a>
+      <nav class="nav-actions" aria-label="Main navigation">
+        <a class="nav-link" href="#how-it-works">Why CampusBite?</a>
+        <a class="nav-link" href="admin-login.html">Admin portal ↗</a>
+        <a class="splash-btn" href="login.html">Sign in <span aria-hidden="true">→</span></a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="dot"></span> Made for campus life</div>
+        <h1>Your cravings.<br>Your campus.<br><em>One easy bite.</em></h1>
+        <p class="hero-copy">Skip the long lines and make lunch the best part of your day. Discover canteen favorites, order in a few clicks, and pick up your food when you’re ready.</p>
+        <div class="hero-actions">
+          <a class="splash-btn" href="login.html">🍔 Start your order <span aria-hidden="true">→</span></a>
+          <a class="splash-btn outline" href="register.html">Create student account</a>
+        </div>
+        <div class="trust-row">
+          <div class="avatar-stack" aria-hidden="true"><span class="avatar">🧑‍🎓</span><span class="avatar">👩‍🎓</span><span class="avatar">👨‍🍳</span></div>
+          <span><strong>Campus convenience, made simple.</strong><br>Browse · Order · Pick up · Enjoy</span>
+        </div>
+      </div>
+
+      <div class="visual" aria-label="Illustration of a delicious campus meal">
+        <span class="spark one">✦</span><span class="spark two">✧</span>
+        <div class="visual-halo"></div>
+        <div class="plate"><div class="food-art" aria-hidden="true">🍔</div></div>
+        <div class="floating-card card-rating"><span class="icon">⭐</span><span><strong>Canteen favorites</strong><small>Something good is waiting</small></span></div>
+        <div class="floating-card card-pickup"><span class="icon">🛍️</span><span><strong>Easy pickup</strong><small>Order ahead, save your break</small></span></div>
+        <div class="mini-badge">Good food. Better breaks.</div>
+      </div>
+    </section>
+
+    <section class="features" id="how-it-works" aria-label="CampusBite benefits">
+      <article class="feature"><span class="feature-icon">⚡</span><div><strong>Quick and easy ordering</strong><p>Find what you want without the long queue.</p></div></article>
+      <article class="feature"><span class="feature-icon">🥡</span><div><strong>Pickup on your schedule</strong><p>Spend less time waiting and more time enjoying.</p></div></article>
+      <article class="feature"><span class="feature-icon">📦</span><div><strong>Order updates in one place</strong><p>Keep track of your orders from checkout to pickup.</p></div></article>
+    </section>
+
+    <footer class="splash-footer">
+      <span>© <span id="year"></span> CampusBite · Made for campus days.</span>
+      <div class="footer-links"><a href="login.html">Student login</a><a href="register.html">Create account</a><a href="admin-login.html">Administrator</a></div>
+    </footer>
+  </main>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
